@@ -1,54 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Document</title>
-	<link rel="stylesheet" href="./bootstrap/bootstrap.min.css" type="text/css" />
-	<script src="./bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="./scripts/jquery.js" type="text/javascript" defer></script>
-	<script src="./scripts/app.js" type="module">
-	</script>
-	<link rel="stylesheet" href="./styles.css" type="text/css" />
-</head>
-<body>
-	<main id="main-wrapper" class="container g-0 d-flex flex-column">
-		<header class="navbar navbar-dark nav-expand-lg">
-			<div class="container-fluid">
-				<div>
-					<button id="nav-btn" class="btn">
-	      		<span class="navbar-toggler-icon"></span>
-					</button>
-				</div>
-				<div class="text-left flex-grow-1">
-			    <span class="h1">Wordle Arena</span>
-				</div>
-				<div>
-					<button id="help" class="btn btn-dark">
-						<i class="bi bi-question-circle">
-						</i>
-					</button>
-					<button id="stats" class="btn btn-dark">
-						<i class="bi bi-bar-chart-line"></i>
-					</button>
-					<button id="settings" class="btn btn-dark">
-						<i class="bi bi-gear-fill"></i>
-					</button>
-				</div>
- 			 </div>
-		</header>
-		<div id="guess-area" class="flex-fill">
-			<div id="guess-box-container" class="container w-75">
-				<!--populates guess rows/boxes via JS-->
-			</div>
-		</div>
-		<footer class="">
-			<div id="keyboard" class="container-fluid">
-				<div id="keyboard-row-1"></div>
-				<div id="keyboard-row-2" class="container"></div>
-				<div id="keyboard-row-3"></div>
-			</div>
-		</footer>
-	</main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="./bootstrap/bootstrap.min.css"
+      type="text/css"
+    />
+    <script src="./bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="./scripts/jquery.js" type="text/javascript" defer></script>
+    <script src="./scripts/app.js" type="module"></script>
+    <link rel="stylesheet" href="./styles.css" type="text/css" />
+  </head>
+  <body>
+    <main id="main-wrapper" class="container g-0 d-flex flex-column">
+      <header class="navbar navbar-dark nav-expand-lg">
+        <div class="container-fluid">
+          <div>
+            <button id="nav-btn" class="btn">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+          <div class="text-left flex-grow-1">
+            <span class="h1">Wordle Arena</span>
+          </div>
+          <div>
+            <button id="help" class="btn btn-dark">
+              <i class="bi bi-question-circle"> </i>
+            </button>
+            <button id="stats" class="btn btn-dark">
+              <i class="bi bi-bar-chart-line"></i>
+            </button>
+            <button id="settings" class="btn btn-dark">
+              <i class="bi bi-gear-fill"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+      <div id="guess-area" class="flex-fill">
+        <div id="guess-box-container" class="container w-75">
+          <!--populates guess rows/boxes via JS-->
+        </div>
+      </div>
+      <footer class="">
+        <div id="keyboard" class="container-fluid">
+          <div id="keyboard-row-1"></div>
+          <div id="keyboard-row-2" class="container"></div>
+          <div id="keyboard-row-3"></div>
+        </div>
+      </footer>
+    </main>
+  </body>
 </html>
