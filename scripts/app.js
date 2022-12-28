@@ -1,4 +1,8 @@
 import GuessBox from "./Components/GuessBox.js"
+import randomWord from "./wordGen.js"
+
+const keyWord = randomWord.split('')
+console.log(keyWord.join())
 
 $(".navbar button").click(e=>alert(`${e.target.parentNode?.id} clicked`))
 
@@ -56,17 +60,30 @@ const setActiveBox=(target)=>{
 setActiveBox()
 
 const checkGuess = () => {
-	let activeRow = $('.guess-row.active')
-	let boxes = activeRow.children('guess-box')
-	let word = boxes.text()
-	console.log(word)
+	let boxes = $('.guess-row.active guess-box')
+	boxes.each((i,b)=>{
+		let letter = $(b).attr('letter')
+		console.log($(b).attr('letter'), keyWord[i])
+		switch (true) {
+			case letter === keyWord[i]:
+				$(b).addClass('correct')
+				break
+			case keyWord.includes(letter):
+			  $(b).addClass('includes')
+				break
+			default:
+			  null
+		}
+	})
+	let correctCount = $('.guess-row.active guess-box.correct')
+	correctCount.length === 5 ? alert('you win!') : null
 }
 
 let keyboardKeys = "QWERTYUIOPASDFGHJKLZXCVBNM".split('')
 keyboardKeys.push("DELETE")
 keyboardKeys.splice(19,0,"ENTER")
 
-let keyEle = $("<button class='key btn btn-dark'></button>")
+let keyEle = $("<div class='key'></div>")
 
 const handleKeyClick = (e) => {
 	let letter = e.target.innerText

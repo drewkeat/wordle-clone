@@ -108,10 +108,18 @@ footer {
 	padding: 0;
 	}
 	
-.guess-row.active {
+/*.guess-row.active {
 	background: darkgreen;
 }
 
 guess-box.active {
+	background: darkorange;
+}*/
+
+.correct {
+	background: darkgreen;
+}
+
+.includes {
 	background: darkorange;
 }
