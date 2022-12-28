@@ -34,26 +34,33 @@ const setActiveBox=(target)=>{
 	let current = $('guess-box.active')
 	const currentIdx = boxes.index(current)
 	switch (true) {
-		case currentIdx >= boxes.length-1:
-		  null
-		  break;
 		case !!target || target === 0:
-			$(current).attr('letter','')
 		  $(current).removeClass('active')
 			current = target
-			$(current).addClass('active')		
-			break;
-		default:
-		  $(current).removeClass('active')
-	 		current = boxes.get(currentIdx+1)
 			$(current).addClass('active')
+			$(current).attr('letter','')
+			break;
+		case currentIdx >= boxes.length - 1:
+		  null
+		  break;
+		default:
+			$(current).index() < boxes.length ?
+		  ($(current).removeClass('active'),
+	 		current = boxes.get(currentIdx+1),
+			$(current).addClass('active')) :
+			null
 			break;
 	}
 }
 
 setActiveBox()
 
-
+const checkGuess = () => {
+	let activeRow = $('.guess-row.active')
+	let boxes = activeRow.children('guess-box')
+	let word = boxes.text()
+	console.log(word)
+}
 
 let keyboardKeys = "QWERTYUIOPASDFGHJKLZXCVBNM".split('')
 keyboardKeys.push("DELETE")
@@ -68,12 +75,12 @@ const handleKeyClick = (e) => {
 	let prevBox = $('.active guess-box').get(idx-1)
 	switch (true) {
 		case letter==="ENTER": 
-		  //checkGuess()
+		  checkGuess()
 		  setActiveRow();
 			setActiveBox();
 			break;
 		case letter === "DELETE":
-			$(activeBox).attr('letter') ?
+			!!$(activeBox).attr('letter') ?
 			$(activeBox).attr('letter', '') :
 			setActiveBox($(prevBox))
 		  break;
