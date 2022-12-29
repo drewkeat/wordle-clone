@@ -105,7 +105,9 @@ footer {
   align-items: center;
   justify-content: center;
   background: grey;
+	color: var(--colors-text-light)
   height: 100%;
+	border: none;
   border-radius: 0.25rem;
   padding: 0;
 }

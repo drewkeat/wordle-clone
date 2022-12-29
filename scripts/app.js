@@ -83,10 +83,10 @@ let keyboardKeys = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
 keyboardKeys.push("DELETE");
 keyboardKeys.splice(19, 0, "ENTER");
 
-let keyEle = $("<div class='key'></div>");
+let keyEle = $("<input class='key' type='button'></input>");
 
 const handleKeyClick = (e) => {
-  let letter = e.target.innerText;
+  let letter = e.target.value;
   let activeBox = $("guess-box.active");
   let idx = activeBox.index();
   let prevBox = $(".active guess-box").get(idx - 1);
@@ -114,7 +114,7 @@ keyEle.click((e) => {
 
 keyboardKeys.forEach((ele, i) => {
   let key = keyEle.clone(true);
-  key.text(ele);
+  $(key).attr('value', ele)
   switch (true) {
     case i < 10:
       $("#keyboard-row-1").append(key);
