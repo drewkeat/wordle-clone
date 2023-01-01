@@ -81,6 +81,15 @@ footer {
   height: 100%;
 }
 
+keyboard-ele {
+  display: grid;
+  /*	grid-template-rows: repeat(3, 1fr);*/
+  grid-gap: 0.25rem;
+  align-items: center;
+  justify-content: start;
+  height: 100%;
+}
+
 #keyboard-row-1 {
   display: grid;
   grid-gap: 0.25rem;
@@ -112,6 +121,11 @@ footer {
   padding: 0;
 }
 
+.key:hover {
+	transition: background .5s;
+	background: red;
+}
+
 /*.guess-row.active {
 	background: darkgreen;
 }
@@ -126,4 +140,8 @@ guess-box.active {
 
 .includes {
   background: darkorange;
+}
+
+.invalid {
+	background: darkgrey;
 }

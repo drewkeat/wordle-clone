@@ -9,7 +9,7 @@ noun
 preposition
 verb`.split(/\n/)
 
-const type = options[(Math.floor(Math.random()*options.length))]
+const type = options[_.random(options.length-1)]
 
 const randomWord = faker.word[type](5,5).toUpperCase()
 
