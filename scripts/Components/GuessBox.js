@@ -6,7 +6,7 @@ const style = `
 	justify-content: center;
 	height: 100%;
 	width: 100%;
-	border: 1px solid grey;
+	border: 1px solid green;
 	`
 
 template.innerHTML = `
@@ -19,6 +19,7 @@ template.innerHTML = `
 		width: 100%;
 		border: 1px solid grey;
 	}
+	
 	h1 {
 		margin-top: 0;
   	margin-bottom: 0;
@@ -37,25 +38,13 @@ const updateLetter=(ele)=>{	ele.shadowRoot.querySelector('h1').textContent = ele
 
 class GuessBox extends HTMLElement{
 	 static get observedAttributes() {
-    return ['letter'];
+    return ['letter', 'class'];
   }
 	constructor(){
 		super()
 		this.attachShadow({mode: "open"})
 	this.shadowRoot.appendChild(template.content.cloneNode(true))
-	this.shadowRoot.querySelector('h1').innerText = this.getAttribute('letter')
-	
-		this.addEventListener('click', e => {
-			let current = $('guess-box.active')
-			switch (true) {
-				case this.parentNode.classList.contains('active'): 
-					current.removeClass('active')
-					this.classList.add('active')
-					break;
-				default:
-				  null
-			}
-		})
+		$('h1').text(this.getAttribute('letter'))
 	}
 	
 	connectedCallback(){

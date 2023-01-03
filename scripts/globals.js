@@ -2,19 +2,26 @@ import getRandomWord from "./Utils/wordGen.js";
 
 const startNewRound = () => {
   let keyWord = getRandomWord().split("");
-	console.log(keyWord.join(''));
 
 	fillGuessBoxContainer();
-	
-	//toggle here
-	// const keyboard = $('<keyboard-ele class="container-fluid"></keyboard-ele>')
-	// keyboard.attr('key', keyWord)
-	// $('footer').append(keyboard)
 	
 	setActiveRow();
 	
 	setActiveBox();
 	
+	addKeyboard(keyWord)
+	
+};
+
+const addKeyboard = (keyWord) => {
+	
+//toggle here
+	// const keyboard = $('<keyboard-ele class="container-fluid"></keyboard-ele>')
+	// keyboard.attr('key', keyWord)
+	// $('footer').append(keyboard)
+	
+	
+	//start comment for testing keyboard component
 	$('footer').html('')
 	$('footer').append(`
 	<div id="keyboard" class="container-fluid">
@@ -23,35 +30,35 @@ const startNewRound = () => {
     <div id="keyboard-row-3"></div>
 	</div>
 	`)
-//start comment for keyboard component
-let keyboardKeys = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
-keyboardKeys.push("DELETE");
-keyboardKeys.splice(19, 0, "ENTER");
-
-let keyEle = $("<input class='key' type='button'></input>");
-
-keyEle.click((e) => {
-  handleKeyClick(e, keyWord);
-	$(e.target).removeClass('clicked')
-});
-
-keyboardKeys.forEach((ele, i) => {
-  let key = keyEle.clone(true);
-  $(key).attr('value', ele)
-  switch (true) {
-    case i < 10:
-      $("#keyboard-row-1").append(key);
-      break;
-    case i < 19:
-      $("#keyboard-row-2").append(key);
-      break;
-    default:
-      $("#keyboard-row-3").append(key);
-  }
-	let enterKey = $(key).attr('value') === 'ENTER'
-});
+	
+	let keyboardKeys = "QWERTYUIOPASDFGHJKLZXCVBNM".split("");
+	keyboardKeys.push("DELETE");
+	keyboardKeys.splice(19, 0, "ENTER");
+	
+	let keyEle = $("<input class='key' type='button'></input>");
+	
+	keyEle.click((e) => {
+	  handleKeyClick(e, keyWord);
+		$(e.target).removeClass('clicked')
+	});
+	
+	keyboardKeys.forEach((ele, i) => {
+	  let key = keyEle.clone(true);
+	  $(key).attr('value', ele)
+	  switch (true) {
+	    case i < 10:
+	      $("#keyboard-row-1").append(key);
+	      break;
+	    case i < 19:
+	      $("#keyboard-row-2").append(key);
+	      break;
+	    default:
+	      $("#keyboard-row-3").append(key);
+	  }
+		let enterKey = $(key).attr('value') === 'ENTER'
+	});
 //end comment
-};
+}
 
 const setActiveBox = (target) => {
   const boxes = $(".guess-row.active guess-box");

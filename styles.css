@@ -128,10 +128,10 @@ keyboard-ele {
 
 /*.guess-row.active {
 	background: darkgreen;
-}
+}*/
 
-guess-box.active {
-	background: darkorange;
+/*guess-box.active {
+	border: 2px solid grey;
 }*/
 
 .correct {
