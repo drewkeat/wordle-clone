@@ -1,4 +1,4 @@
-const template =  document.createElement('template')
+const template = document.createElement("template");
 
 const style = `
 	display: flex;
@@ -7,7 +7,7 @@ const style = `
 	height: 100%;
 	width: 100%;
 	border: 1px solid green;
-	`
+	`;
 
 template.innerHTML = `
   <style>
@@ -31,30 +31,30 @@ template.innerHTML = `
 	<div class="guess-box">
 		<h1></h1>
 	</div>
-`
+`;
 
-const updateLetter=(ele)=>{	ele.shadowRoot.querySelector('h1').textContent = ele.getAttribute('letter')
-}
+const updateLetter = (ele) => {
+  ele.shadowRoot.querySelector("h1").textContent = ele.getAttribute("letter");
+};
 
-class GuessBox extends HTMLElement{
-	 static get observedAttributes() {
-    return ['letter', 'class'];
+class GuessBox extends HTMLElement {
+  static get observedAttributes() {
+    return ["letter", "class"];
   }
-	constructor(){
-		super()
-		this.attachShadow({mode: "open"})
-	this.shadowRoot.appendChild(template.content.cloneNode(true))
-		$('h1').text(this.getAttribute('letter'))
-	}
-	
-	connectedCallback(){
-	}
-	
-	attributeChangedCallback(){
-		updateLetter(this)
-	}
+  constructor() {
+    super();
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+    $("h1").text(this.getAttribute("letter"));
+  }
+
+  connectedCallback() {}
+
+  attributeChangedCallback() {
+    updateLetter(this);
+  }
 }
 
-customElements.define('guess-box', GuessBox)
+customElements.define("guess-box", GuessBox);
 
-export default GuessBox
+export default GuessBox;

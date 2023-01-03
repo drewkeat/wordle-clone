@@ -19,19 +19,19 @@ html {
 body {
   background: var(--colors-main-bg);
   color: var(--colors-text-light);
-  height: 75vh;
+  height: 100vh;
 }
 
 main {
   height: 100%;
 }
 
-header {
-  /*	border: 1px solid red;*/
-}
+/* header {
+  	border: 1px solid red;
+} */
 
 #guess-area {
-  /*	border: 1px solid blue;*/
+  max-width: 30rem;
 }
 
 footer {
@@ -114,16 +114,16 @@ keyboard-ele {
   align-items: center;
   justify-content: center;
   background: grey;
-	color: var(--colors-text-light)
+  color: var(--colors-text-light);
   height: 100%;
-	border: none;
+  border: none;
   border-radius: 0.25rem;
   padding: 0;
 }
 
 .key:hover {
-	transition: background .5s;
-	background: red;
+  transition: background 0.5s;
+  background: red;
 }
 
 /*.guess-row.active {
@@ -143,5 +143,5 @@ keyboard-ele {
 }
 
 .invalid {
-	background: darkgrey;
+  background: darkgrey;
 }
