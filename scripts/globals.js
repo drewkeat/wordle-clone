@@ -1,6 +1,7 @@
 import getRandomWord from "./Utils/wordGen.js";
 
 const startNewRound = () => {
+	console.log("new round")
   let keyWord = getRandomWord().split("");
 
   fillGuessBoxContainer();
@@ -128,28 +129,30 @@ const setActiveRow = () => {
   $(current).addClass("active");
 };
 
-const checkGuess = (keyWord) => {
+const checkGuess = async (keyWord) => {
   const boxes = $(".guess-row.active guess-box");
   const word = [...boxes].map((ele) => ele.getAttribute("letter")).join("");
-  if (validWordCheck(word)) {
+	const isValid = await validWordCheck(word)
+  if (!isValid) {
     alert("invalid word");
     return false;
-  }
-  boxes.each((i, b) => {
-    let letter = $(b).attr("letter");
-    switch (true) {
-      case letter === keyWord[i]:
-        $(b).addClass("correct");
-        break;
-      case keyWord.includes(letter):
-        $(b).addClass("includes");
-        break;
-      default:
-        $(b).addClass("invalid");
-        null;
-    }
-  });
-  return checkWin(keyWord);
+  } else {
+		boxes.each((i, b) => {
+	    let letter = $(b).attr("letter");
+	    switch (true) {
+	      case letter === keyWord[i]:
+	        $(b).addClass("correct");
+	        break;
+	      case keyWord.includes(letter):
+	        $(b).addClass("includes");
+	        break;
+	      default:
+	        $(b).addClass("invalid");
+	        null;
+	    }
+	  });	
+	  return checkWin(keyWord);
+	}
 };
 
 const checkWin = (keyWord) => {
@@ -168,7 +171,7 @@ const checkWin = (keyWord) => {
   }
 };
 
-const handleKeyClick = (e, keyWord) => {
+const handleKeyClick = async (e, keyWord) => {
   $(e.target).addClass("clicked");
   let letter = e.target.value || e.key.toUpperCase();
   let activeBox = $("guess-box.active");
@@ -176,7 +179,7 @@ const handleKeyClick = (e, keyWord) => {
   let prevBox = $(".active guess-box").get(idx - 1);
   switch (true) {
     case letter === "ENTER":
-      checkGuess(keyWord) ? startNewRound() : (setActiveRow(), setActiveBox());
+      await checkGuess(keyWord) ? startNewRound() : (setActiveRow(), setActiveBox());
       break;
     case letter === "DELETE" || letter === "BACKSPACE":
       !!$(activeBox).attr("letter")

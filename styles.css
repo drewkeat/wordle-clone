@@ -12,14 +12,15 @@
   margin: 0;
   padding: 0;
 }
+
 html {
-  height: 75vh;
+  height: 100dvh;
   overflow: hidden;
 }
 body {
   background: var(--colors-main-bg);
   color: var(--colors-text-light);
-  height: 100vh;
+  height: 100dvh;
 }
 
 main {
@@ -31,7 +32,7 @@ main {
 } */
 
 #guess-area {
-  max-width: 30rem;
+  max-width: 35rem;
 }
 
 footer {
